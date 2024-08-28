@@ -1,0 +1,908 @@
+--store
+
+
+local spinEnabled = false
+local floatEnabled = false
+local anchored = false
+--[[
+Orion Library Script
+
+This script is created using the Orion Library to manage a UI window and tabs.
+The UI elements include:
+- Window: The main UI window.
+- Tab: A tab inside the window where different sections and UI elements are organized.
+- Section: A subsection within a tab to group related UI elements.
+- Slider: A slider to adjust the walk speed of the Blobman creature.
+]]
+
+-- Load the Orion Library
+local PlayerToysFolder = game.Players.LocalPlayer.Name .. "SpawnedInToys"
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+
+
+
+local plr = game.Players.LocalPlayer
+
+local whitelisted = {"TheAzureEpic", "AssAssWithDik", "FreakyDaveFlinge"}
+
+for _, name in ipairs(whitelisted) do
+	if plr.Name == name then
+		
+		OrionLib:MakeNotification({
+			Name = "ruh roh!",
+			Content = "sry skid but this is a private script :)",
+			Image = "rbxassetid://4483345998",
+			Time = 5
+		})
+		
+		
+		
+		
+	end
+end
+
+
+
+
+
+
+
+
+--[[
+Window Element
+Name = "Title of the library"
+HidePremium = false
+SaveConfig = true
+ConfigFolder = "OrionTest"
+]]
+local Window = OrionLib:MakeWindow({
+	Name = "e",
+	HidePremium = false,
+	SaveConfig = true,
+	ConfigFolder = "OrionTest"
+})
+
+--[[
+Tab Element
+Name = "silly properties"
+Icon = "rbxassetid://4483345998"
+PremiumOnly = false
+]]
+local Tab = Window:MakeTab({
+	Name = "silly properties",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+--[[
+Section Element
+Name = "works on ur toys only"
+]]
+local Section = Tab:AddSection({
+	Name = "works on ur toys only"
+})
+
+--[[
+Slider Element
+Name = "set ur blobman speed"
+Min = 0
+Max = 1000
+Default = 20
+Color = Color3.fromRGB(255,255,255)
+Increment = 1
+ValueName = "blobman walkspeed"
+Callback = <function> - Sets the walk speed of Blobman based on the slider value
+]]
+Tab:AddSlider({
+	Name = "ttest",
+	Min = 0,
+	Max = 1000,
+	Default = 20,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "blobman walkspeed",
+	Callback = function(Value)
+		-- Set the Blobman's walk speed here
+		for _, des in workspace[PlayerToysFolder]:GetDescendants() do
+			if des.Name == "CreatureBlobman" then
+				local humanoid = des:FindFirstChild("HumanoidCreature")
+				if humanoid then
+					humanoid.WalkSpeed = Value
+				end
+			end
+		end
+	end    
+})
+
+
+
+
+
+
+
+Tab:AddButton({
+	Name = "make all of ur toys fly into the sky",
+	Callback = function()
+		print("FLYYYYYYYYY")
+		for _, des in ipairs(workspace[PlayerToysFolder]:GetDescendants()) do
+			if des:IsA("BasePart") and not des.Anchored then
+				-- Get or create BodyVelocity
+				local bodyVelocity = des:FindFirstChildOfClass("BodyVelocity")
+				if not bodyVelocity then
+					bodyVelocity = Instance.new("BodyVelocity")
+					bodyVelocity.Parent = des
+				end
+
+				-- Set BodyVelocity properties
+				bodyVelocity.Velocity = Vector3.new(0, 50, 0)  -- Adjust the Y value for the desired upward force
+				bodyVelocity.MaxForce = Vector3.new(math.huge, math.huge, math.huge)  -- Ensure the force is sufficient
+
+				-- Optional: Remove BodyVelocity after a certain time
+				--[[delay(5, function()  -- Wait 5 seconds before removing BodyVelocity
+					bodyVelocity:Destroy()
+				end)]]
+			end
+
+		end
+	end    
+})
+
+
+
+
+
+
+
+--[[
+Name = <string> - The name of the button.
+Callback = <function> - The function of the button.
+]]
+
+
+
+
+
+
+
+Tab:AddButton({
+	Name = "make all of ur toys spin violently brrrrr",
+	Callback = function()
+
+		for _, des in ipairs(workspace[PlayerToysFolder]:GetDescendants()) do
+			if des:IsA("BasePart") and not des.Anchored then
+				-- Get or create BodyAngularVelocity
+				local bodyAngularVelocity = des:FindFirstChildOfClass("BodyAngularVelocity")
+				if not bodyAngularVelocity then
+					bodyAngularVelocity = Instance.new("BodyAngularVelocity")
+					bodyAngularVelocity.Parent = des
+				end
+
+				-- Set BodyAngularVelocity properties
+				bodyAngularVelocity.AngularVelocity = Vector3.new(0, 150, 0)  -- Adjust the Y value for the desired spin speed
+				bodyAngularVelocity.MaxTorque = Vector3.new(math.huge, math.huge, math.huge)  -- Ensure the torque is sufficient
+
+				-- Optional: Remove BodyAngularVelocity after a certain time
+
+			end
+		end
+	end    
+})
+
+
+
+
+
+Tab:AddTextbox({
+	Name = "spin ur toys (set a value)",
+	Default = "",
+	TextDisappear = true,
+	Callback = function(Value)
+		print(Value)
+		for _, des in ipairs(workspace[PlayerToysFolder]:GetDescendants()) do
+			if des:IsA("BasePart") and not des.Anchored then
+				-- Get or create BodyAngularVelocity
+				local bodyAngularVelocity = des:FindFirstChildOfClass("BodyAngularVelocity")
+				if not bodyAngularVelocity then
+					bodyAngularVelocity = Instance.new("BodyAngularVelocity")
+					bodyAngularVelocity.Parent = des
+				end
+
+				-- Set BodyAngularVelocity properties
+				bodyAngularVelocity.AngularVelocity = Vector3.new(0, Value, 0)  -- Adjust the Y value for the desired spin speed
+				bodyAngularVelocity.MaxTorque = Vector3.new(math.huge, math.huge, math.huge)  -- Ensure the torque is sufficient
+
+				-- Optional: Remove BodyAngularVelocity after a certain time
+
+			end
+		end
+	end	  
+})
+
+
+
+
+
+Tab:AddButton({
+	Name = "blackhole that sucks all your toys to your position",
+	Callback = function()
+		local referencePart = nil
+
+		-- Iterate through all toys to find the first unanchored BasePart as the reference part
+		for _, des in ipairs(workspace[PlayerToysFolder]:GetDescendants()) do
+			if des:IsA("BasePart") and not des.Anchored then
+				referencePart = des
+				break
+			end
+		end
+
+		-- If a reference part is found, attach all other parts to it
+		if referencePart then
+			for _, des in ipairs(workspace[PlayerToysFolder]:GetDescendants()) do
+				if des:IsA("BasePart") and des ~= referencePart then
+					-- Create and configure BodyPosition
+					local bodyPosition = Instance.new("BodyPosition")
+					bodyPosition.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+					bodyPosition.Position =game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+					bodyPosition.Parent = des
+
+					-- Create and configure BodyGyro
+					local bodyGyro = Instance.new("BodyGyro")
+					bodyGyro.MaxTorque = Vector3.new(math.huge, math.huge, math.huge)
+					bodyGyro.CFrame = referencePart.CFrame
+					bodyGyro.Parent = des
+				end
+			end
+		else
+			print("No reference part found. Ensure there are unanchored BaseParts in your toys.")
+		end
+	end    
+})
+
+
+Tab:AddTextbox({
+	Name = "tp toys to plr",
+	Default = "a player",
+	TextDisappear = true,
+	Callback = function(Value)
+		print(Value)
+		for i, des in workspace[PlayerToysFolder]:GetDescendants() do
+			if des:IsA("BasePart") then
+				local char = workspace[Value]
+				local hrp = char:FindFirstChild("HumanoidRootPart")
+				if hrp then
+					des.Position = hrp.Position
+				end
+			end
+		end
+	end	  
+})
+
+--[[
+Name = <string> - The name of the textbox.
+Default = <string> - The default value of the textbox.
+TextDisappear = <bool> - Makes the text disappear in the textbox after losing focus.
+Callback = <function> - The function of the textbox.
+]]
+
+
+
+
+
+
+
+
+Tab:AddButton({
+	Name = "Anchor All Toys ig",
+	Callback = function()
+		local toysFolder = workspace.AssAssWithDikSpawnedInToys
+
+		for _, child in ipairs(toysFolder:GetChildren()) do
+			if child:IsA("Model") or child:IsA("BasePart") then
+				local primaryPart = child.PrimaryPart or child:FindFirstChildWhichIsA("BasePart")
+
+				if primaryPart then
+					-- Remove existing BodyVelocity or BodyAngularVelocity
+					for _, existing in ipairs(primaryPart:GetChildren()) do
+						if existing:IsA("BodyVelocity") or existing:IsA("BodyAngularVelocity") then
+							existing:Destroy()
+						end
+					end
+
+					-- Create and configure BodyPosition
+					local bodyPosition = Instance.new("BodyPosition")
+					bodyPosition.MaxForce = Vector3.new(math.huge, math.huge, math.huge)  -- Extremely high force
+					bodyPosition.P = 1e5  -- Very high power
+					bodyPosition.D = 10000  -- High damping to reduce oscillation
+					bodyPosition.Position = primaryPart.Position
+					bodyPosition.Parent = primaryPart
+
+					-- Create and configure BodyGyro
+					local bodyGyro = Instance.new("BodyGyro")
+					bodyGyro.MaxTorque = Vector3.new(math.huge, math.huge, math.huge)  -- Extremely high torque
+					bodyGyro.CFrame = primaryPart.CFrame
+					bodyGyro.Parent = primaryPart
+
+					-- Optionally, create and configure AlignPosition for extra stability
+					local alignPosition = Instance.new("AlignPosition")
+					alignPosition.MaxForce = math.huge
+					alignPosition.MaxVelocity = math.huge
+					alignPosition.Responsiveness = 200
+					alignPosition.Position = primaryPart.Position
+					alignPosition.Parent = primaryPart
+				end
+			end
+		end
+	end
+})
+
+
+
+
+
+
+local Tab2 = Window:MakeTab({
+	Name = "other",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+
+
+Tab2:AddButton({
+	Name = "test",
+	Callback = function()
+
+
+	end    
+})
+
+Tab2:AddButton({
+	Name = "network owner thing",
+
+	Callback = function()
+		-- Check if the toggle is on
+		for _, ting in PlayerToysFolder:GetDescendants() do
+
+
+			local args = {
+				[1] = ting,
+				[2] = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame
+			}
+
+			-- Fire the remote event to set network ownership
+			game:GetService("ReplicatedStorage").GrabEvents.SetNetworkOwner:FireServer(unpack(args))
+		end
+	end    
+})
+
+--[[
+Tab2:AddToggle({
+	Name = "make whatever u grab spin",
+	Default = false,
+	Callback = function(Value)
+
+	
+			
+			
+			workspace.ChildAdded:Connect(function(child: Instance) 
+			if Value then
+			
+				
+				if child.Name == "GrabParts" and child:IsA("Model") then
+					local weld = child:FindFirstChild("GrabPart").WeldConstraint
+					if weld and weld:IsA("WeldConstraint") then
+						local partToAffect = weld.Part1
+
+					
+						local bodyAngularVelocity = Instance.new("BodyAngularVelocity")
+						bodyAngularVelocity.AngularVelocity = Vector3.new(0, 50, 0) 
+						bodyAngularVelocity.MaxTorque = Vector3.new(100000, 100000, 100000) 
+						bodyAngularVelocity.P = 10000
+						bodyAngularVelocity.Parent = partToAffect 
+					end   
+					end
+				end	
+			end)
+		end
+	 
+})
+
+
+
+Tab2:AddToggle({
+	Name = "make whatever u grab FLOAT",
+	Default = false,
+	Callback = function(Value)
+
+		
+
+
+
+			workspace.ChildAdded:Connect(function(child: Instance) 
+if Value then
+
+				if child.Name == "GrabParts" and child:IsA("Model") then
+					local weld = child:FindFirstChild("GrabPart").WeldConstraint
+					if weld and weld:IsA("WeldConstraint") then
+						local partToAffect = weld.Part1
+
+						local bodyPosition = Instance.new("BodyPosition")
+						bodyPosition.MaxForce = Vector3.new(0, math.huge, 0)
+						bodyPosition.Position = partToAffect.Position + Vector3.new(0, 10, 0)
+						bodyPosition.Parent = partToAffect
+					end 
+				end
+				end	
+			end)
+		end
+	    
+})
+
+
+]]
+
+
+
+-- Create a variable to store the current state of the toggles
+
+
+-- Set up a single ChildAdded event listener
+workspace.ChildAdded:Connect(function(child)
+	if child.Name == "GrabParts" and child:IsA("Model") then
+		local weld = child:FindFirstChild("GrabPart").WeldConstraint
+		if weld and weld:IsA("WeldConstraint") then
+			local partToAffect = weld.Part1
+
+			-- If spin toggle is enabled, add BodyAngularVelocity
+			if spinEnabled then
+				local bodyAngularVelocity = Instance.new("BodyAngularVelocity")
+				bodyAngularVelocity.AngularVelocity = Vector3.new(0, 50, 0) 
+				bodyAngularVelocity.MaxTorque = Vector3.new(100000, 100000, 100000) 
+				bodyAngularVelocity.P = 10000
+				bodyAngularVelocity.Parent = partToAffect
+			end
+
+			-- If float toggle is enabled, add BodyPosition
+			if floatEnabled then
+				local bodyPosition = Instance.new("BodyPosition")
+				bodyPosition.MaxForce = Vector3.new(0, math.huge, 0)
+				bodyPosition.Position = partToAffect.Position + Vector3.new(0, 10, 0)
+				bodyPosition.Parent = partToAffect
+			end
+			
+			if anchored then
+				local bodyPosition = Instance.new("BodyPosition")
+				bodyPosition.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+				bodyPosition.Position = partToAffect.Position 
+				bodyPosition.Parent = partToAffect
+			end
+			
+		end
+	end
+end)
+
+-- Toggle for spinning
+Tab2:AddToggle({
+	Name = "make whatever u grab spin",
+	Default = false,
+	Callback = function(Value)
+		spinEnabled = Value
+	end
+})
+
+-- Toggle for floating
+Tab2:AddToggle({
+	Name = "make whatever u grab FLOAT",
+	Default = false,
+	Callback = function(Value)
+		floatEnabled = Value
+	end
+})
+
+Tab2:AddToggle({
+	Name = "anchor grab",
+	Default = false,
+	Callback = function(Value)
+		anchored = Value
+	end
+})
+
+
+
+
+
+--[[
+Name = <string> - The name of the toggle.
+Default = <bool> - The default value of the toggle.
+Callback = <function> - The function of the toggle.
+]]
+
+
+
+
+--[[
+Name = <string> - The name of the toggle.
+Default = <bool> - The default value of the toggle.
+Callback = <function> - The function of the toggle.
+]]
+
+
+local Tab3 = Window:MakeTab({
+	Name = "blobman 🥵",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+
+
+Tab3:AddTextbox({
+	Name = "grab a plr (TYPE PLR OR CHAR's NAME)",
+	Default = "a player",
+	TextDisappear = true,
+	Callback = function(Value)
+		local args = {
+			[1] = workspace[PlayerToysFolder].CreatureBlobman.RightDetector,
+			[2] = workspace:FindFirstChild(Value):FindFirstChild("HumanoidRootPart"),
+			[3] = workspace[PlayerToysFolder].CreatureBlobman.RightDetector.RightWeld
+		}
+
+		workspace[PlayerToysFolder].CreatureBlobman.BlobmanSeatAndOwnerScript.CreatureGrab:FireServer(unpack(args))
+	end	  
+})
+
+
+
+Tab3:AddButton({
+	Name = "make ur blob speedy (slider wont work for some reason)",
+	Callback = function()
+
+		for i, des in workspace[PlayerToysFolder]:GetDescendants() do
+			if des.Name == "CreatureBlobman" then
+				local humanoid = des:FindFirstChild("HumanoidCreature")
+				if humanoid then
+					print("hum found!")
+					humanoid.WalkSpeed = 150
+				end
+			end
+		end
+	end    
+})
+
+--[[
+Name = <string> - The name of the button.
+Callback = <function> - The function of the button.
+]]
+
+
+
+
+
+local Tab4 = Window:MakeTab({
+	Name = "experimental",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+
+
+Tab4:AddButton({
+	Name = "tp all plrs to u (blob)",
+	Callback = function()
+		for _, plr in game.Players:GetPlayers() do
+			local players = game.Players:GetPlayers()
+			local chosen = players[math.random(1, #players)]
+
+
+
+			local args = {
+				[1] = workspace[PlayerToysFolder].CreatureBlobman.RightDetector,
+				[2] = chosen.Character:FindFirstChild("HumanoidRootPart"),
+				[3] = workspace[PlayerToysFolder].CreatureBlobman.RightDetector.RightWeld
+			}
+
+			workspace[PlayerToysFolder].CreatureBlobman.BlobmanSeatAndOwnerScript.CreatureGrab:FireServer(unpack(args))
+			task.wait()
+
+
+			local args = {
+				[1] = workspace.AssAssWithDikSpawnedInToys.CreatureBlobman.RightDetector.RightWeld,
+				[2] = chosen.Character.HumanoidRootPart
+			}
+
+			workspace.AssAssWithDikSpawnedInToys.CreatureBlobman.BlobmanSeatAndOwnerScript.CreatureDrop:FireServer(unpack(args))
+
+
+		end
+	end    
+})
+
+
+Tab4:AddButton({
+	Name = "network owner all parts",
+	Callback = function()
+		for _, ting in workspace:GetDescendants() do
+
+			if ting:IsA("BasePart") then
+				game.Players.LocalPlayer.Character:PivotTo(ting.CFrame)
+				local args = {
+					[1] = ting,
+					[2] = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame
+				}
+
+				-- Fire the remote event to set network ownership
+				game:GetService("ReplicatedStorage").GrabEvents.SetNetworkOwner:FireServer(unpack(args))
+				task.wait()
+			end    	end  end
+})
+
+
+
+
+Tab4:AddButton({
+	Name = "network owner all PLAYERS",
+	Callback = function()
+		
+		for _, plr in game.Players:GetPlayers() do
+		
+		
+		for _, ting in plr.Character:GetDescendants() do
+
+			if ting:IsA("BasePart") then
+				game.Players.LocalPlayer.Character:PivotTo(ting.CFrame)
+				
+				local args = {
+					[1] = ting,
+					[2] = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame
+				}
+
+				-- Fire the remote event to set network ownership
+				game:GetService("ReplicatedStorage").GrabEvents.SetNetworkOwner:FireServer(unpack(args))
+				task.wait()
+			end    	end  end end
+})
+
+
+
+Tab4:AddButton({
+	Name = "kick server or smth",
+	Callback = function()
+		for _, plr in game.Players:GetPlayers() do
+			local players = game.Players:GetPlayers()
+			local chosen = players[math.random(1, #players)]
+
+			--	if chosen.Name == game.Players.LocalPlayer.Name then return end
+
+			local hrp = chosen.Character:FindFirstChild("HumanoidRootPart")
+
+
+			local args = {
+				[1] = workspace[PlayerToysFolder].CreatureBlobman.RightDetector,
+				[2] = chosen.Character:FindFirstChild("HumanoidRootPart"),
+				[3] = workspace[PlayerToysFolder].CreatureBlobman.RightDetector.RightWeld
+			}
+
+
+
+			workspace[PlayerToysFolder].CreatureBlobman.BlobmanSeatAndOwnerScript.CreatureGrab:FireServer(unpack(args))
+
+			local part = Instance.new("Part")
+
+			part.Parent = workspace
+			part.Anchored = true
+			part.Position = hrp.Position + Vector3.new(0,10,0)
+
+
+
+			-- Get or create BodyVelocity
+			local bodyVelocity = hrp:FindFirstChildOfClass("AlignPosition")
+			if not bodyVelocity then
+				bodyVelocity = Instance.new("AlignPosition")
+				bodyVelocity.Parent = hrp
+				bodyVelocity.Attachment0 = part
+				bodyVelocity.Attachment1 = hrp
+			end
+
+			-- Set BodyVelocity properties
+			bodyVelocity.Responsiveness = 50  -- Adjust the Y value for the desired upward force
+			bodyVelocity.Position = hrp.Position + Vector3.new(0,30,0)  -- Ensure the force is sufficient
+
+			-- Optional: Remove BodyVelocity after a certain time
+				--[[delay(5, function()  -- Wait 5 seconds before removing BodyVelocity
+					bodyVelocity:Destroy()
+				end)]]
+
+			local args = {
+				[1] = chosen.Character:FindFirstChild("HumanoidRootPart"),
+				[2] = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame
+			}
+
+			-- Fire the remote event to set network ownership
+			game:GetService("ReplicatedStorage").GrabEvents.SetNetworkOwner:FireServer(unpack(args))
+
+
+
+
+
+
+			task.wait()
+
+
+			local args = {
+				[1] = workspace[PlayerToysFolder].CreatureBlobman.RightDetector.RightWeld,
+				[2] = chosen.Character.HumanoidRootPart
+			}
+
+			workspace[PlayerToysFolder].CreatureBlobman.BlobmanSeatAndOwnerScript.CreatureDrop:FireServer(unpack(args))
+
+
+		end
+	end    
+})
+
+
+
+
+--[[
+Name = <string> - The name of the button.
+Callback = <function> - The function of the button.
+]]
+
+
+
+Tab4:AddToggle({
+	Name = "anti fling",
+
+	Callback = function()
+		-- Check if the toggle is on
+
+		-- Start a loop that will run while the toggle is on
+
+		game:GetService("ReplicatedStorage").CharacterEvents.Struggle:FireServer()
+
+
+
+		local args = {
+			[1] = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart,
+			[2] = 0
+		}
+
+		game:GetService("ReplicatedStorage").CharacterEvents.RagdollRemote:FireServer(unpack(args))
+
+
+		task.wait(0.1)
+
+		-- Continue the loop while the toggle is true
+
+
+	end    
+})
+
+
+
+
+
+local Tab5 = Window:MakeTab({
+	Name = "troll ppl",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+
+
+
+
+Tab5:AddTextbox({
+	Name = "nuke a plr",
+	Default = "",
+	TextDisappear = true,
+	Callback = function(Value)
+		local targetChar = Value
+		local player = game.Players.LocalPlayer
+
+
+		--[[
+		for _, toy in workspace[PlayerToysFolder]:GetChildren() do
+			if toy.Name == "BombMissle" then
+				
+				local args = {
+					[1] = toy
+				}
+
+				game:GetService("ReplicatedStorage").MenuToys.DestroyToy:FireServer(unpack(args))
+				
+				task.wait()
+			end
+		end]]
+
+
+
+
+
+		local spawnArgs = {
+			[1] = "BombMissile",
+			[2] = workspace[Value]:FindFirstChild("HumanoidRootPart").CFrame,
+			--		[2] = CFrame.new(-38.43901824951172, -5.686331272125244, -39.0489387512207) * CFrame.Angles(-2.7963578701019287, 0.24700288474559784, 3.053887128829956),
+			[3] = workspace[Value]:FindFirstChild("HumanoidRootPart").Position
+		}
+
+		game:GetService("ReplicatedStorage").MenuToys.SpawnToyRemoteFunction:InvokeServer(unpack(spawnArgs))
+
+
+
+
+
+
+		print("Missile spawned")
+
+		task.wait()  
+
+		local args = {
+			[1] = {
+				["Radius"] = 17.5,
+				["TimeLength"] = 0.5,
+				["Hitbox"] = workspace.AssAssWithDikSpawnedInToys.BombMissile.PartHitDetector,
+				["ExplodesByFire"] = true,
+				["MaxForcePerStudSquared"] = 225,
+				["DestroysModel"] = true,
+				["Model"] = workspace.AssAssWithDikSpawnedInToys.BombMissile,
+				["ExplodesByPointy"] = false,
+				["ImpactSpeed"] = 100,
+				["PositionPart"] = workspace[targetChar]:FindFirstChild("HumanoidRootPart")
+			},
+			[2] = Vector3.new(173,34,324)
+		}
+
+		game:GetService("ReplicatedStorage").BombEvents.BombExplode:FireServer(unpack(args)) 
+		print("KABOOOOOOOMm")
+	end	  
+})
+
+
+
+
+
+
+local Tab6 = Window:MakeTab({
+	Name = "useful things",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+
+
+
+
+Tab6:AddButton({
+	Name = "remote spy",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/REDzHUB/RS/main/SimpleSpyMobile"))()
+	end
+})
+
+ --[[
+Tab6:AddButton({
+
+	Name = "ragebyte test",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Undebolted/FTAP/main/Script.lua",true))()
+	end
+
+
+})
+]]
+
+
+Tab6:AddButton({
+	Name = "Faster Escape Button",
+	Callback = function()
+		loadstring(game:HttpGet("https://pastefy.app/URjxjw7D/raw"))()
+	end
+	
+	
+	
+	
+})
+
+-- Initialize the Orion Library UI
+OrionLib:Init()
