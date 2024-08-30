@@ -1045,12 +1045,11 @@ Callback = function()
 for i, pl in game.Players:GetPlayers() do
 
 local args = {
-    [1] = pl.Character.HumanoidRootPart,
-    [2] = CFrame.new()
+    [1] =pl.Character.Torso,
+    [2] = CFrame.new(-4.288475036621094, 0.75, 0.2604484558105469) * CFrame.Angles(-3.141242504119873, -0.17532388865947723, 3.139568567276001)
 }
 
 game:GetService("ReplicatedStorage").GrabEvents.CreateGrabLine:FireServer(unpack(args))
-
 
 
 
