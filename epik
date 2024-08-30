@@ -1037,7 +1037,28 @@ Tab7:AddButton({
 })
 
 
+Tab7:AddButton({
+Name = "grab every player in the server"
 
+Callback = function()
+
+for i, pl in game.Players:GetPlayers() do
+
+local args = {
+    [1] = pl.Character.HumanoidRootPart,
+    [2] = CFrame.new()
+}
+
+game:GetService("ReplicatedStorage").GrabEvents.CreateGrabLine:FireServer(unpack(args))
+
+
+
+
+
+end
+end
+
+})
 
 
 -- Initialize the Orion Library UI
