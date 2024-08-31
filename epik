@@ -146,7 +146,7 @@ Tab:AddButton({
 Tab:AddButton({
 	Name = "Better Meme",
 	Callback = function()
-		loadstring(game:HttpGet("https://github.com/AzureEpic/a/blob/main/Better%20Meme"))() 
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/AzureEpic/a/main/Better%20Meme"))() 
 	end    
 })
 
