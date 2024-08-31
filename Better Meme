@@ -147,9 +147,10 @@ TabBM:AddSection({
 TabBM:AddButton({
 	Name = "+25 Cash (i cant change the amount it gives)",
 	Callback = function()
+		pcall(function(...) 
 		game:GetService("ReplicatedStorage").Services.DailyService.RF.GetReward:InvokeServer()
 
-
+ end)()
 	end,
 	
 	
@@ -173,9 +174,11 @@ TabBM:AddToggle({
 
 while wait() do
 	if givingMoney == true then
-		game:GetService("ReplicatedStorage").Services.DailyService.RF.GetReward:InvokeServer()
+		
+		pcall(function(...) 
+			game:GetService("ReplicatedStorage").Services.DailyService.RF.GetReward:InvokeServer()
 
-
+		end)()
 	end
 end
 
