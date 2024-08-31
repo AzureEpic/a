@@ -1,0 +1,163 @@
+--store
+
+--FTAP
+local spinEnabled = false
+local floatEnabled = false
+local anchored = false
+----------
+---Better meme
+local givingMoney = false
+local firstMeme 
+local secondMeme
+local spammingQueue = false
+
+
+
+--[[
+Orion Library Script
+
+This script is created using the Orion Library to manage a UI window and tabs.
+The UI elements include:
+- Window: The main UI window.
+- Tab: A tab inside the window where different sections and UI elements are organized.
+- Section: A subsection within a tab to group related UI elements.
+- Slider: A slider to adjust the walk speed of the Blobman creature.
+]]
+
+
+
+
+-- Load the Orion Library
+local PlayerToysFolder = game.Players.LocalPlayer.Name .. "SpawnedInToys"
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/AzureEpic/a/main/orion')))()
+
+
+local plr = game.Players.LocalPlayer
+
+local whitelisted = {"TheAzureEpic", "AssAssWithDik", "FreakyDaveFlinge"}
+
+
+
+
+
+local isWhitelisted = false
+
+
+for _, name in ipairs(whitelisted) do
+	if plr.Name == name then
+		isWhitelisted = true
+		break
+	end
+end
+
+
+if not isWhitelisted then
+	OrionLib:MakeNotification({
+		Name = "ruh roh!",
+		Content = "sry skid but this is a private script :)",
+		Image = "rbxassetid://4483345998",
+		Time = 5
+	})
+
+
+	wait(5)
+
+
+	return
+
+
+end
+
+
+
+
+
+
+
+
+--[[
+Window Element
+Name = "Title of the library"
+HidePremium = false
+SaveConfig = true
+ConfigFolder = "OrionTest"
+]]
+local Window = OrionLib:MakeWindow({
+	Name = "sigma",
+	HidePremium = false,
+	SaveConfig = true,
+	ConfigFolder = "OrionTest"
+})
+
+--[[
+Tab Element
+Name = "silly properties"
+Icon = "rbxassetid://4483345998"
+PremiumOnly = false
+]]
+
+
+
+local Tab = Window:MakeTab({
+	Name = "hubs i made",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+--[[
+Section Element
+Name = "works on ur toys only"
+]]
+local Section = Tab:AddSection({
+	Name = "i made these"
+})
+
+--[[
+Slider Element
+Name = "set ur blobman speed"
+Min = 0
+Max = 1000
+Default = 20
+Color = Color3.fromRGB(255,255,255)
+Increment = 1
+ValueName = "blobman walkspeed"
+Callback = <function> - Sets the walk speed of Blobman based on the slider value
+]]
+
+
+
+
+
+
+
+
+Tab:AddButton({
+	Name = "FTAP hub ig lol",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/AzureEpic/a/main/FTAP"))()
+	end    
+})
+
+
+
+
+
+
+Tab:AddButton({
+	Name = "Better Meme",
+	Callback = function()
+		loadstring(game:HttpGet("https://github.com/AzureEpic/a/blob/main/Better%20Meme"))() 
+	end    
+})
+
+
+
+
+
+
+
+
+
+
+-- Initialize the Orion Library UI
+OrionLib:Init()
