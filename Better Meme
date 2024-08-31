@@ -51,9 +51,7 @@ local TabBM = Window:MakeTab({
 TabBM:AddButton({
 	Name = "+25 Cash (i cant change the amount it gives)",
 	Callback = function()
-		pcall(function() 
-			game:GetService("ReplicatedStorage").Services.DailyService.RF.GetReward:InvokeServer()
-		end)
+		game:GetService("ReplicatedStorage").Services.DailyService.RF.GetReward:InvokeServer()
 	end,
 })
 
@@ -70,13 +68,11 @@ TabBM:AddToggle({
 TabBM:AddButton({
 	Name = "Queue Skibidi and Wat the Sigma lol",
 	Callback = function()
-		pcall(function()
-			local args = {
-				[1] = "Skibidi Toilet",
-				[2] = "Erm, What the Sigma?"
-			}
-			game:GetService("ReplicatedStorage").Services.MemeService.RF.QueueCurrencies:InvokeServer(unpack(args))
-		end)
+		local args = {
+			[1] = "Skibidi Toilet",
+			[2] = "Erm, What the Sigma?"
+		}
+		game:GetService("ReplicatedStorage").Services.MemeService.RF.QueueCurrencies:InvokeServer(unpack(args))
 	end,
 })
 
@@ -105,10 +101,8 @@ TabBM:AddButton({
 	Name = "Queue memes that were typed above",
 	Callback = function()
 		if firstMeme and secondMeme then
-			pcall(function()
-				local args = {firstMeme, secondMeme}
-				game:GetService("ReplicatedStorage").Services.MemeService.RF.QueueCurrencies:InvokeServer(unpack(args))
-			end)
+			local args = {firstMeme, secondMeme}
+			game:GetService("ReplicatedStorage").Services.MemeService.RF.QueueCurrencies:InvokeServer(unpack(args))
 		end
 	end,
 })
@@ -125,15 +119,11 @@ TabBM:AddToggle({
 -- Main Loop
 game:GetService("RunService").Heartbeat:Connect(function()
 	if givingMoney then
-		pcall(function()
-			game:GetService("ReplicatedStorage").Services.DailyService.RF.GetReward:InvokeServer()
-		end)
+		game:GetService("ReplicatedStorage").Services.DailyService.RF.GetReward:InvokeServer()
 	end
 	if spammingQueue and firstMeme and secondMeme then
-		pcall(function()
-			local args = {firstMeme, secondMeme}
-			game:GetService("ReplicatedStorage").Services.MemeService.RF.QueueCurrencies:InvokeServer(unpack(args))
-		end)
+		local args = {firstMeme, secondMeme}
+		game:GetService("ReplicatedStorage").Services.MemeService.RF.QueueCurrencies:InvokeServer(unpack(args))
 	end
 end)
 
