@@ -1,0 +1,154 @@
+local spinEnabled = false
+local floatEnabled = false
+local anchored = false
+local givingMoney = false
+local firstMeme 
+local secondMeme
+local spammingQueue = false
+
+-- Load the Orion Library
+local PlayerToysFolder = game.Players.LocalPlayer.Name .. "SpawnedInToys"
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/AzureEpic/a/main/orion')))()
+
+local plr = game.Players.LocalPlayer
+
+local whitelisted = {"TheAzureEpic", "AssAssWithDik", "FreakyDaveFlinge"}
+
+local isWhitelisted = false
+
+for _, name in ipairs(whitelisted) do
+	if plr.Name == name then
+		isWhitelisted = true
+		break
+	end
+end
+
+if not isWhitelisted then
+	OrionLib:MakeNotification({
+		Name = "ruh roh!",
+		Content = "sry skid but this is a private script :)",
+		Image = "rbxassetid://4483345998",
+		Time = 5
+	})
+	wait(5)
+	return
+end
+
+local Window = OrionLib:MakeWindow({
+	Name = "Doors",
+	HidePremium = false,
+	SaveConfig = true,
+	ConfigFolder = "OrionTest"
+})
+
+local TabBM = Window:MakeTab({
+	Name = "doors",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+
+TabBM:AddButton({
+	Name = "Revive",
+	Callback = function()
+		pcall(function() 
+			game.ReplicatedStorage.Bricks.Revive:FireServer()
+		end)
+	end,
+})
+
+
+
+
+TabBM:AddButton({
+	Name = "Play Again",
+	Callback = function()
+		game.ReplicatedStorage.Bricks.PlayAgain:FireServer()
+	end
+	
+	
+})
+
+
+
+
+
+
+--[[
+Name = <string> - The name of the textbox.
+Default = <string> - The default value of the textbox.
+TextDisappear = <bool> - Makes the text disappear in the textbox after losing focus.
+Callback = <function> - The function of the textbox.
+]]
+
+
+
+
+--[[
+
+TabBM:AddTextBox({
+	Name = "First meme to queue",
+	Default = "",
+	TextDisappear = false,
+	Callback = function(Value)
+		pcall(function()
+		firstMeme = Value
+		end)()
+	end,
+})
+
+TabBM:AddTextBox({
+	Name = "Second meme to queue",
+	Default = "",
+	TextDisappear = false,
+	Callback = function(Value)
+		pcall(function()
+			secondMeme = Value
+		end)()
+	end,
+})
+
+TabBM:AddButton({
+	Name = "Queue memes that were typed above",
+	Callback = function()
+		if firstMeme and secondMeme then
+			local args = {firstMeme, secondMeme}
+			game:GetService("ReplicatedStorage").Services.MemeService.RF.QueueCurrencies:InvokeServer(unpack(args))
+		end
+	end,
+})
+
+TabBM:AddToggle({
+	Name = "Spam queue with what you typed above",
+	Default = false,
+	Callback = function(Value)
+		spammingQueue = Value
+	end,
+})
+
+game:GetService("RunService").Heartbeat:Connect(function()
+	if givingMoney then
+		game:GetService("ReplicatedStorage").Services.DailyService.RF.GetReward:InvokeServer()
+	end
+	if spammingQueue and firstMeme and secondMeme then
+		local args = {firstMeme, secondMeme}
+		game:GetService("ReplicatedStorage").Services.MemeService.RF.QueueCurrencies:InvokeServer(unpack(args))
+	end
+end)
+]]
+
+
+
+
+
+-- Initialize the Orion Library UI
+OrionLib:Init()
+
+
+
+
+game:GetService("RunService").Heartbeat:Connect(function()
+--spam stuff
+
+
+end)
