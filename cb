@@ -1,0 +1,200 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local ButtonPack = Instance.new("ScreenGui")
+local AnchorButton = Instance.new("ImageButton")
+local ImageLabel = Instance.new("ImageLabel")
+local Escape = Instance.new("ImageButton")
+local ImageLabel_2 = Instance.new("ImageLabel")
+local ESP = Instance.new("ImageButton")
+local TextLabel = Instance.new("TextLabel")
+local FartherReach = Instance.new("ImageButton")
+local ImageLabel_3 = Instance.new("ImageLabel")
+
+--Properties:
+
+ButtonPack.Name = "ButtonPack"
+ButtonPack.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ButtonPack.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+AnchorButton.Name = "AnchorButton"
+AnchorButton.Parent = ButtonPack
+AnchorButton.BackgroundColor3 = Color3.fromRGB(5, 1, 3)
+AnchorButton.BackgroundTransparency = 1.000
+AnchorButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+AnchorButton.BorderSizePixel = 0
+AnchorButton.Position = UDim2.new(0.534044325, 0, 0.856948256, 0)
+AnchorButton.Size = UDim2.new(0.0820344537, 0, 0.136239782, 0)
+AnchorButton.Image = "rbxassetid://97166444"
+
+ImageLabel.Parent = AnchorButton
+ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageLabel.BackgroundTransparency = 1.000
+ImageLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ImageLabel.BorderSizePixel = 0
+ImageLabel.Position = UDim2.new(0.144329891, 0, 0.109999999, 0)
+ImageLabel.Size = UDim2.new(0.711340189, 0, 0.779999971, 0)
+ImageLabel.Image = "http://www.roblox.com/asset/?id=18107573879"
+
+Escape.Name = "Escape"
+Escape.Parent = ButtonPack
+Escape.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Escape.BackgroundTransparency = 1.000
+Escape.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Escape.BorderSizePixel = 0
+Escape.Position = UDim2.new(0.628383934, 0, 0.856948256, 0)
+Escape.Size = UDim2.new(0.0820344537, 0, 0.136239782, 0)
+Escape.Image = "rbxassetid://97166444"
+
+ImageLabel_2.Parent = Escape
+ImageLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageLabel_2.BackgroundTransparency = 1.000
+ImageLabel_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ImageLabel_2.BorderSizePixel = 0
+ImageLabel_2.Position = UDim2.new(0.144329891, 0, 0.109999999, 0)
+ImageLabel_2.Size = UDim2.new(0.711340189, 0, 0.779999971, 0)
+ImageLabel_2.Image = "rbxassetid://108613321233764"
+
+ESP.Name = "ESP"
+ESP.Parent = ButtonPack
+ESP.BackgroundColor3 = Color3.fromRGB(5, 1, 3)
+ESP.BackgroundTransparency = 1.000
+ESP.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ESP.BorderSizePixel = 0
+ESP.Position = UDim2.new(0.44380641, 0, 0.856948256, 0)
+ESP.Size = UDim2.new(0.0803937688, 0, 0.136239782, 0)
+ESP.Image = "rbxassetid://97166444"
+
+TextLabel.Parent = ESP
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.BorderSizePixel = 0
+TextLabel.Position = UDim2.new(0, 0, 0.25, 0)
+TextLabel.Size = UDim2.new(0.99999994, 0, 0.5, 0)
+TextLabel.Font = Enum.Font.Ubuntu
+TextLabel.Text = "ESP"
+TextLabel.TextColor3 = Color3.fromRGB(254, 254, 254)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 14.000
+TextLabel.TextWrapped = true
+
+FartherReach.Name = "FartherReach"
+FartherReach.Parent = ButtonPack
+FartherReach.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+FartherReach.BackgroundTransparency = 1.000
+FartherReach.BorderColor3 = Color3.fromRGB(0, 0, 0)
+FartherReach.BorderSizePixel = 0
+FartherReach.Position = UDim2.new(0.34679848, 0, 0.856948256, 0)
+FartherReach.Size = UDim2.new(0.0820344537, 0, 0.136239782, 0)
+FartherReach.Image = "rbxassetid://97166444"
+
+ImageLabel_3.Parent = FartherReach
+ImageLabel_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageLabel_3.BackgroundTransparency = 1.000
+ImageLabel_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ImageLabel_3.BorderSizePixel = 0
+ImageLabel_3.Position = UDim2.new(0.144329891, 0, 0.109999999, 0)
+ImageLabel_3.Size = UDim2.new(0.711340189, 0, 0.779999971, 0)
+ImageLabel_3.Image = "rbxassetid://119347745327117"
+
+-- Scripts:
+
+local function MWHFRE_fake_script() -- AnchorButton.LocalScript 
+	local script = Instance.new('LocalScript', AnchorButton)
+
+	script.Parent.MouseButton1Click:Connect(function()
+	
+		script.Parent.Boom:Play()
+	
+		for _, child in workspace:GetChildren() do
+			if child:IsA("Model") and child.Name == "GrabParts" then
+				local weld = child:FindFirstChild("GrabPart").WeldConstraint
+				if weld and weld.Part1 then
+					local Affected = weld.Part1
+	
+					-- Add BodyPosition to keep the part in place
+					local bodyPosition = Instance.new("BodyPosition")
+					bodyPosition.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+					bodyPosition.Position = Affected.Position 
+					bodyPosition.Parent = Affected
+	
+					-- Add BodyGyro to prevent the part from rotating
+					local bodyGyro = Instance.new("BodyGyro")
+					bodyGyro.MaxTorque = Vector3.new(math.huge, math.huge, math.huge) -- MaxTorque allows it to resist rotation
+					bodyGyro.CFrame = Affected.CFrame -- Keeps the current orientation
+					bodyGyro.Parent = Affected
+				end
+			end
+		end
+	end)
+	
+end
+coroutine.wrap(MWHFRE_fake_script)()
+local function HODGYSM_fake_script() -- Escape.LocalScript 
+	local script = Instance.new('LocalScript', Escape)
+
+	script.Parent.MouseButton1Click:Connect(function()
+	
+	game:GetService("ReplicatedStorage").CharacterEvents.Struggle:FireServer(game:GetService("Players").LocalPlayer)
+	
+	
+	
+	local args = {
+		[1] = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart,
+		[2] = 0
+	}
+	
+	game:GetService("ReplicatedStorage").CharacterEvents.RagdollRemote:FireServer(unpack(args))
+	
+	end)
+end
+coroutine.wrap(HODGYSM_fake_script)()
+local function SSBJCYT_fake_script() -- ESP.LocalScript 
+	local script = Instance.new('LocalScript', ESP)
+
+	
+	script.Parent.MouseButton1Click:Connect(function()
+	
+	for _, child in game.Players:GetPlayers() do
+	
+	
+			
+			local hl = Instance.new("Highlight")
+			
+			hl.Parent = child.Character
+			hl.FillTransparency = 1
+			hl.OutlineColor = Color3.fromRGB(0,100,255)
+			
+	
+			
+	
+	end
+	end)
+end
+coroutine.wrap(SSBJCYT_fake_script)()
+local function TTKCOM_fake_script() -- FartherReach.LocalScript 
+	local script = Instance.new('LocalScript', FartherReach)
+
+	
+	
+	
+	for i,v in pairs(debug.getregistry()) do
+	
+		if type(v) == "function" and not is_synapse_function(v) then
+			local Values = debug.getupvalues(v)
+			for a,b in pairs(Values) do
+				if type(b) == "number" and b == 20 then
+					debug.setupvalue(v, a, 30)
+				end
+			end
+	
+	
+		end
+	end
+	
+	
+end
+coroutine.wrap(TTKCOM_fake_script)()
