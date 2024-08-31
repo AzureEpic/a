@@ -120,16 +120,20 @@ TabBM:AddToggle({
 })
 
 
+TabBM:AddToggle({
+	Name = "Spam +25 cash",
+	Default = false,
+	Callback = function(Value)
+		givingMoney = Value
+	end,
+	
+	
+	
+	
+})
 
-game:GetService("RunService").Heartbeat:Connect(function()
-	if givingMoney then
-		game:GetService("ReplicatedStorage").Services.DailyService.RF.GetReward:InvokeServer()
-	end
-	if spammingQueue and firstMeme and secondMeme then
-		local args = {firstMeme, secondMeme}
-		game:GetService("ReplicatedStorage").Services.MemeService.RF.QueueCurrencies:InvokeServer(unpack(args))
-	end
-end)
+
+
 
 --[[
 Name = <string> - The name of the textbox.
@@ -200,3 +204,16 @@ end)
 
 -- Initialize the Orion Library UI
 OrionLib:Init()
+
+
+
+
+game:GetService("RunService").Heartbeat:Connect(function()
+	if givingMoney then
+		game:GetService("ReplicatedStorage").Services.DailyService.RF.GetReward:InvokeServer()
+	end
+	if spammingQueue and firstMeme and secondMeme then
+		local args = {firstMeme, secondMeme}
+		game:GetService("ReplicatedStorage").Services.MemeService.RF.QueueCurrencies:InvokeServer(unpack(args))
+	end
+end)
