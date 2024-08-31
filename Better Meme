@@ -83,6 +83,71 @@ TabBM:AddButton({
 
 
 
+TabBM:AddTextbox({
+	Name = "First meme to spawn",
+	Default = "",
+	TextDisappear = false,
+	Callback = function(Value)
+		pcall(function()
+			firstMeme = Value
+		end)()
+	end	  
+})
+
+
+TabBM:AddTextbox({
+	Name = "Second meme to spawn",
+	Default = "",
+	TextDisappear = false,
+	Callback = function(Value)
+		pcall(function()
+			secondMeme = Value
+		end)()
+	end	  
+})
+
+
+
+TabBM:AddButton({
+	Name = "Queue memes that were typed above",
+	Callback = function()
+		if firstMeme and secondMeme then
+			local args = {firstMeme, secondMeme}
+			game:GetService("ReplicatedStorage").Services.MemeService.RF.QueueCurrencies:InvokeServer(unpack(args))
+		end
+	end,
+})
+
+TabBM:AddToggle({
+	Name = "Spam queue with what you typed above",
+	Default = false,
+	Callback = function(Value)
+		spammingQueue = Value
+	end,
+})
+
+
+
+game:GetService("RunService").Heartbeat:Connect(function()
+	if givingMoney then
+		game:GetService("ReplicatedStorage").Services.DailyService.RF.GetReward:InvokeServer()
+	end
+	if spammingQueue and firstMeme and secondMeme then
+		local args = {firstMeme, secondMeme}
+		game:GetService("ReplicatedStorage").Services.MemeService.RF.QueueCurrencies:InvokeServer(unpack(args))
+	end
+end)
+
+--[[
+Name = <string> - The name of the textbox.
+Default = <string> - The default value of the textbox.
+TextDisappear = <bool> - Makes the text disappear in the textbox after losing focus.
+Callback = <function> - The function of the textbox.
+]]
+
+
+
+
 --[[
 
 TabBM:AddTextBox({
