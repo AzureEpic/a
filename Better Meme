@@ -81,9 +81,9 @@ TabBM:AddTextbox({
 	Default = "",
 	TextDisappear = false,
 	Callback = function(Value)
-		pcall(function()
+	
 			firstMeme = Value
-		end)()
+		
 	end	  
 })
 
@@ -93,9 +93,9 @@ TabBM:AddTextbox({
 	Default = "",
 	TextDisappear = false,
 	Callback = function(Value)
-		pcall(function()
+		
 			secondMeme = Value
-		end)()
+		
 	end	  
 })
 
