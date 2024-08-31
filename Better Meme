@@ -8,7 +8,7 @@ local spammingQueue = false
 
 -- Load the Orion Library
 local PlayerToysFolder = game.Players.LocalPlayer.Name .. "SpawnedInToys"
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/AzureEpic/a/main/orion')))()
 
 local plr = game.Players.LocalPlayer
 
