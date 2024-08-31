@@ -67,6 +67,24 @@ TabBM:AddToggle({
 
 
 
+TabBM:AddButton({
+	Name = "queue skibidi and wat the sigma  lol",
+	Callback = pcall(function()
+		local args = {
+			[1] = "Skibidi Toilet",
+			[2] = "Erm, What the Sigma?"
+		}
+
+		game:GetService("ReplicatedStorage").Services.MemeService.RF.QueueCurrencies:InvokeServer(unpack(args))
+	end)()
+	
+	
+})
+
+
+
+--[[
+
 TabBM:AddTextBox({
 	Name = "First meme to queue",
 	Default = "",
@@ -116,6 +134,11 @@ game:GetService("RunService").Heartbeat:Connect(function()
 		game:GetService("ReplicatedStorage").Services.MemeService.RF.QueueCurrencies:InvokeServer(unpack(args))
 	end
 end)
+]]
+
+
+
+
 
 -- Initialize the Orion Library UI
 OrionLib:Init()
