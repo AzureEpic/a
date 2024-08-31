@@ -24,6 +24,9 @@ The UI elements include:
 - Slider: A slider to adjust the walk speed of the Blobman creature.
 ]]
 
+
+
+
 -- Load the Orion Library
 local PlayerToysFolder = game.Players.LocalPlayer.Name .. "SpawnedInToys"
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
@@ -32,6 +35,10 @@ local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shl
 local plr = game.Players.LocalPlayer
 
 local whitelisted = {"TheAzureEpic", "AssAssWithDik", "FreakyDaveFlinge"}
+
+local CurrentGames = {"Fling Things and People", "Better Meme"}
+
+
 
 local isWhitelisted = false
 
@@ -88,6 +95,9 @@ Name = "silly properties"
 Icon = "rbxassetid://4483345998"
 PremiumOnly = false
 ]]
+
+function FTAPHub()
+
 local Tab = Window:MakeTab({
 	Name = "FTAP",
 	Icon = "rbxassetid://4483345998",
@@ -1027,9 +1037,9 @@ Tab:AddButton({
 
 
 
+end-------END OF FTAP HUB-----rtshtwuorshtju8u5348539g7yteuty3ty7348ytt4h5ty43y5y435
 
-
-
+function BetterMemeHub()
 
 -----Better meme
 
@@ -1185,6 +1195,18 @@ while wait() do
 
 	end
 end
+
+end----------End of Better Meme hub 4hbwnuiehikj5r3ny85n45rye47856n785ny er78nr5ef65ft3b45bh6378b5bh58345687r5683rh56b
+
+if game.Name == "Fling Things and People" then
+	FTAPHub()
+elseif string.find("Better Meme") then
+	BetterMemeHub()
+
+end
+
+
+
 
 
 -- Initialize the Orion Library UI
