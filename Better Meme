@@ -1,47 +1,20 @@
---store
-
---FTAP
 local spinEnabled = false
 local floatEnabled = false
 local anchored = false
-----------
----Better meme
 local givingMoney = false
 local firstMeme 
 local secondMeme
 local spammingQueue = false
 
-
-
---[[
-Orion Library Script
-
-This script is created using the Orion Library to manage a UI window and tabs.
-The UI elements include:
-- Window: The main UI window.
-- Tab: A tab inside the window where different sections and UI elements are organized.
-- Section: A subsection within a tab to group related UI elements.
-- Slider: A slider to adjust the walk speed of the Blobman creature.
-]]
-
-
-
-
 -- Load the Orion Library
 local PlayerToysFolder = game.Players.LocalPlayer.Name .. "SpawnedInToys"
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-
 
 local plr = game.Players.LocalPlayer
 
 local whitelisted = {"TheAzureEpic", "AssAssWithDik", "FreakyDaveFlinge"}
 
-
-
-
-
 local isWhitelisted = false
-
 
 for _, name in ipairs(whitelisted) do
 	if plr.Name == name then
@@ -50,7 +23,6 @@ for _, name in ipairs(whitelisted) do
 	end
 end
 
-
 if not isWhitelisted then
 	OrionLib:MakeNotification({
 		Name = "ruh roh!",
@@ -58,30 +30,10 @@ if not isWhitelisted then
 		Image = "rbxassetid://4483345998",
 		Time = 5
 	})
-
-
 	wait(5)
-
-
 	return
-
-
 end
 
-
-
-
-
-
-
-
---[[
-Window Element
-Name = "Title of the library"
-HidePremium = false
-SaveConfig = true
-ConfigFolder = "OrionTest"
-]]
 local Window = OrionLib:MakeWindow({
 	Name = "Better Meme",
 	HidePremium = false,
@@ -89,98 +41,35 @@ local Window = OrionLib:MakeWindow({
 	ConfigFolder = "OrionTest"
 })
 
---[[
-Tab Element
-Name = "silly properties"
-Icon = "rbxassetid://4483345998"
-PremiumOnly = false
-]]
-
-
-
-
---[[
-Section Element
-Name = "works on ur toys only"
-]]
-
---[[
-Slider Element
-Name = "set ur blobman speed"
-Min = 0
-Max = 1000
-Default = 20
-Color = Color3.fromRGB(255,255,255)
-Increment = 1
-ValueName = "blobman walkspeed"
-Callback = <function> - Sets the walk speed of Blobman based on the slider value
-]]
-
-
-
------Better meme
-
-
 local TabBM = Window:MakeTab({
 	Name = "Better Meme",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 
-
-
 TabBM:AddSection({
 	Name = "Useful things"
-	
-	
 })
-
 
 TabBM:AddButton({
 	Name = "+25 Cash (i cant change the amount it gives)",
 	Callback = function()
-		pcall(function(...) 
-		game:GetService("ReplicatedStorage").Services.DailyService.RF.GetReward:InvokeServer()
-
- end)()
-	end,
-	
-	
-	
-})
-
-while wait() do
-	if givingMoney == true then
-		
-
+		pcall(function() 
 			game:GetService("ReplicatedStorage").Services.DailyService.RF.GetReward:InvokeServer()
-
-	
-	end
-end
-
-
-
-
-
+		end)
+	end,
+})
 
 TabBM:AddToggle({
-	
 	Name = "Auto give cash",
 	Default = false,
-	Callback  = function(Value)
+	Callback = function(Value)
 		givingMoney = Value
 	end,
-	
-	
 })
-
-
 
 TabBM:AddSection({
 	Name = "Queue (-250 cash, meme names need to be exact)"
-	
-	
 })
 
 TabBM:AddTextBox({
@@ -190,7 +79,6 @@ TabBM:AddTextBox({
 	Callback = function(Value)
 		firstMeme = Value
 	end,
-	
 })
 
 TabBM:AddTextBox({
@@ -200,87 +88,35 @@ TabBM:AddTextBox({
 	Callback = function(Value)
 		secondMeme = Value
 	end,
-
 })
-
-
 
 TabBM:AddButton({
 	Name = "Queue memes that were typed above",
-	Callback  = function()
-		
-		
-		local args = {
-			[1] = firstMeme,
-			[2] = secondMeme
-		}
-
-		game:GetService("ReplicatedStorage").Services.MemeService.RF.QueueCurrencies:InvokeServer(unpack(args))
-
-		
-		
-		
-		
-		
-		
+	Callback = function()
+		if firstMeme and secondMeme then
+			local args = {firstMeme, secondMeme}
+			game:GetService("ReplicatedStorage").Services.MemeService.RF.QueueCurrencies:InvokeServer(unpack(args))
+		end
 	end,
-	
-	
-	
 })
-
-
-
-
 
 TabBM:AddToggle({
 	Name = "Spam queue with what you typed above",
-	Defalt = false,
-	Callback  = function(Value)
-spammingQueue = true
-
-
-	end,
-
-
-
-})
-
-
-TabBM:AddToggle({
-
-	Name = "Auto give cash",
 	Default = false,
-	Callback  = function(Value)
-		givingMoney = Value
+	Callback = function(Value)
+		spammingQueue = Value
 	end,
-
-
 })
 
-while wait() do
-	if spammingQueue == true then
-
-
-		local args = {
-			[1] = firstMeme,
-			[2] = secondMeme
-		}
-
-		game:GetService("ReplicatedStorage").Services.MemeService.RF.QueueCurrencies:InvokeServer(unpack(args))
-
-
-
-
-
+game:GetService("RunService").Heartbeat:Connect(function()
+	if givingMoney then
+		game:GetService("ReplicatedStorage").Services.DailyService.RF.GetReward:InvokeServer()
 	end
-end
-
-----------End of Better Meme hub 4hbwnuiehikj5r3ny85n45rye47856n785ny er78nr5ef65ft3b45bh6378b5bh58345687r5683rh56b
-
-
-
-
+	if spammingQueue and firstMeme and secondMeme then
+		local args = {firstMeme, secondMeme}
+		game:GetService("ReplicatedStorage").Services.MemeService.RF.QueueCurrencies:InvokeServer(unpack(args))
+	end
+end)
 
 -- Initialize the Orion Library UI
 OrionLib:Init()
