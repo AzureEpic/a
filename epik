@@ -1200,7 +1200,7 @@ end----------End of Better Meme hub 4hbwnuiehikj5r3ny85n45rye47856n785ny er78nr5
 
 if game.Name == "Fling Things and People" then
 	FTAPHub()
-elseif string.find(game.Name, "Better Meme") then
+elseif game.Name == "Better Meme?" then
 	BetterMemeHub()
 
 end
