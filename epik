@@ -45,9 +45,9 @@ if not isWhitelisted then
 
 
 	wait(5)
-	
-	
-return
+
+
+	return
 
 
 end
@@ -80,7 +80,7 @@ Icon = "rbxassetid://4483345998"
 PremiumOnly = false
 ]]
 local Tab = Window:MakeTab({
-	Name = "silly properties",
+	Name = "FTAP",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
@@ -332,23 +332,15 @@ Tab:AddButton({
 
 
 
-local Tab2 = Window:MakeTab({
-	Name = "other",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
+local Section = Tab:AddSection({
+	Name = "Other"
 })
 
 
 
-Tab2:AddButton({
-	Name = "test",
-	Callback = function()
 
 
-	end    
-})
-
-Tab2:AddButton({
+Tab:AddButton({
 	Name = "network owner thing",
 
 	Callback = function()
@@ -392,20 +384,20 @@ workspace.ChildAdded:Connect(function(child)
 				bodyPosition.Position = partToAffect.Position + Vector3.new(0, 10, 0)
 				bodyPosition.Parent = partToAffect
 			end
-			
+
 			if anchored then
 				local bodyPosition = Instance.new("BodyPosition")
 				bodyPosition.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
 				bodyPosition.Position = partToAffect.Position 
 				bodyPosition.Parent = partToAffect
 			end
-			
+
 		end
 	end
 end)
 
 -- Toggle for spinning
-Tab2:AddToggle({
+Tab:AddToggle({
 	Name = "make whatever u grab spin",
 	Default = false,
 	Callback = function(Value)
@@ -414,7 +406,7 @@ Tab2:AddToggle({
 })
 
 -- Toggle for floating
-Tab2:AddToggle({
+Tab:AddToggle({
 	Name = "make whatever u grab FLOAT",
 	Default = false,
 	Callback = function(Value)
@@ -422,7 +414,7 @@ Tab2:AddToggle({
 	end
 })
 
-Tab2:AddToggle({
+Tab:AddToggle({
 	Name = "anchor grab",
 	Default = false,
 	Callback = function(Value)
@@ -450,15 +442,14 @@ Callback = <function> - The function of the toggle.
 ]]
 
 
-local Tab3 = Window:MakeTab({
-	Name = "blobman 🥵",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
+
+local Section = Tab:AddSection({
+	Name = "blobman 🥵"
 })
 
 
 
-Tab3:AddTextbox({
+Tab:AddTextbox({
 	Name = "grab a plr (TYPE PLR OR CHAR's NAME)",
 	Default = "a player",
 	TextDisappear = true,
@@ -475,7 +466,7 @@ Tab3:AddTextbox({
 
 
 
-Tab3:AddButton({
+Tab:AddButton({
 	Name = "make ur blob speedy (slider wont work for some reason)",
 	Callback = function()
 
@@ -500,23 +491,21 @@ Callback = <function> - The function of the button.
 
 
 
-local Tab4 = Window:MakeTab({
-	Name = "experimental",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
+
+local Section = Tab:AddSection({
+	Name = "Experimental"
 })
 
 
-
-Tab4:AddButton({
+Tab:AddButton({
 	Name = "tp all plrs to u (blob)",
 	Callback = function()
-	
 
-		
-		
-		
-		
+
+
+
+
+
 		for _, plr in game.Players:GetPlayers() do
 			local players = game.Players:GetPlayers()
 			local chosen = players[math.random(1, #players)]
@@ -546,7 +535,7 @@ Tab4:AddButton({
 })
 
 
-Tab4:AddButton({
+Tab:AddButton({
 	Name = "network owner all parts",
 	Callback = function()
 		for _, ting in workspace:GetDescendants() do
@@ -567,32 +556,32 @@ Tab4:AddButton({
 
 
 
-Tab4:AddButton({
+Tab:AddButton({
 	Name = "network owner all PLAYERS",
 	Callback = function()
-		
+
 		for _, plr in game.Players:GetPlayers() do
-		
-		
-		for _, ting in plr.Character:GetDescendants() do
 
-			if ting:IsA("BasePart") and ting.Name == "HumanoidRootPart" then
-				game.Players.LocalPlayer.Character:PivotTo(ting.CFrame)
-				
-				local args = {
-					[1] = ting,
-					[2] = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame
-				}
 
-				-- Fire the remote event to set network ownership
-				game:GetService("ReplicatedStorage").GrabEvents.SetNetworkOwner:FireServer(unpack(args))
-				task.wait()
-			end    	end  end end
+			for _, ting in plr.Character:GetDescendants() do
+
+				if ting:IsA("BasePart") and ting.Name == "HumanoidRootPart" then
+					game.Players.LocalPlayer.Character:PivotTo(ting.CFrame)
+
+					local args = {
+						[1] = ting,
+						[2] = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame
+					}
+
+					-- Fire the remote event to set network ownership
+					game:GetService("ReplicatedStorage").GrabEvents.SetNetworkOwner:FireServer(unpack(args))
+					task.wait()
+				end    	end  end end
 })
 
 
 
-Tab4:AddButton({
+Tab:AddButton({
 	Name = "kick server or smth",
 	Callback = function()
 		for _, plr in game.Players:GetPlayers() do
@@ -678,7 +667,7 @@ Callback = <function> - The function of the button.
 
 
 
-Tab4:AddToggle({
+Tab:AddToggle({
 	Name = "anti fling",
 
 	Callback = function()
@@ -710,18 +699,15 @@ Tab4:AddToggle({
 
 
 
-local Tab5 = Window:MakeTab({
-	Name = "troll ppl",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
+local Section = Tab:AddSection({
+	Name = "Troll"
 })
 
 
 
 
-
-Tab5:AddTextbox({
-	Name = "nuke a plr",
+Tab:AddTextbox({
+	Name = "nuke a plr (BROKEN)",
 	Default = "",
 	TextDisappear = true,
 	Callback = function(Value)
@@ -791,17 +777,16 @@ Tab5:AddTextbox({
 
 
 
-local Tab6 = Window:MakeTab({
-	Name = "useful things",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
+
+local Section = Tab:AddSection({
+	Name = "Helpful things"
 })
 
 
 
 
 
-Tab6:AddButton({
+Tab:AddButton({
 	Name = "remote spy",
 	Callback = function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/REDzHUB/RS/main/SimpleSpyMobile"))()
@@ -821,28 +806,28 @@ Tab6:AddButton({
 ]]
 
 
-Tab6:AddButton({
-	Name = "Button Pack (anchor grab and faster escape)",
+Tab:AddButton({
+	Name = "Button Pack (with useful stuff)",
 	Callback = function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/AzureEpic/-/main/unpack"))()
 	end
-	
-	
-	
-	
+
+
+
+
 })
 
 
 
 
-Tab6:AddButton({
-	
+Tab:AddButton({
+
 	Name = "Farther reach free lol",
 	Callback = function()
-		
-		
-		
-		
+
+
+
+
 		for i,v in pairs(debug.getregistry()) do
 
 			if type(v) == "function" and not is_synapse_function(v) then
@@ -855,24 +840,24 @@ Tab6:AddButton({
 
 
 			end
-			end
+		end
 
-		
-		
-		
-		
+
+
+
+
 	end
-	
-	
-	
-	
-	
+
+
+
+
+
 })
 
 
 
 
-Tab6:AddButton({
+Tab:AddButton({
 
 	Name = "Disable farther reach",
 	Callback = function()
@@ -1012,25 +997,19 @@ Callback = <function> - The function of the slider.
 
 
 
-local Tab7 = Window:MakeTab({
-	Name = "Troll",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
 
 
-
-Tab7:AddButton({
+Tab:AddButton({
 	Name = "Make all of your parts EXTREMELY heavy (WIP)",
 	Callback = function()
 
 		for _, des in ipairs(workspace[PlayerToysFolder]:GetDescendants()) do
 			if des:IsA("BasePart") then
-			local mesh = Instance.new("SpecialMesh")
-			mesh.Parent = des
-			mesh.MeshType = Enum.MeshType.FileMesh
+				local mesh = Instance.new("SpecialMesh")
+				mesh.Parent = des
+				mesh.MeshType = Enum.MeshType.FileMesh
 				mesh.MeshId = "rbxassetid://97511242213020"
-				
+
 			end
 		end
 	end    
