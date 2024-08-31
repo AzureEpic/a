@@ -98,19 +98,11 @@ PremiumOnly = false
 
 
 
-local Tab = Window:MakeTab({
-	Name = "Better Meme",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
 
 --[[
 Section Element
 Name = "works on ur toys only"
 ]]
-local Section = Tab:AddSection({
-	Name = "ok"
-})
 
 --[[
 Slider Element
@@ -157,6 +149,18 @@ TabBM:AddButton({
 	
 })
 
+while wait() do
+	if givingMoney == true then
+		
+
+			game:GetService("ReplicatedStorage").Services.DailyService.RF.GetReward:InvokeServer()
+
+	
+	end
+end
+
+
+
 
 
 
@@ -170,18 +174,6 @@ TabBM:AddToggle({
 	
 	
 })
-
-
-while wait() do
-	if givingMoney == true then
-		
-		pcall(function(...) 
-			game:GetService("ReplicatedStorage").Services.DailyService.RF.GetReward:InvokeServer()
-
-		end)()
-	end
-end
-
 
 
 
