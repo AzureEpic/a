@@ -1,9 +1,18 @@
 --store
 
-
+--FTAP
 local spinEnabled = false
 local floatEnabled = false
 local anchored = false
+----------
+---Better meme
+local givingMoney = false
+local firstMeme 
+local secondMeme
+local spammingQueue = false
+
+
+
 --[[
 Orion Library Script
 
@@ -1015,6 +1024,167 @@ Tab:AddButton({
 	end    
 })
 
+
+
+
+
+
+
+
+-----Better meme
+
+
+local TabBM = Window:MakeTab({
+	Name = "Better Meme",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+
+
+TabBM:AddSection({
+	Name = "Useful things"
+	
+	
+})
+
+
+TabBM:AddButton({
+	Name = "+25 Cash (i cant change the amount it gives)",
+	Callback = function()
+		game:GetService("ReplicatedStorage").Services.DailyService.RF.GetReward:InvokeServer()
+
+
+	end,
+	
+	
+	
+})
+
+
+
+
+TabBM:AddToggle({
+	
+	Name = "Auto give cash",
+	Default = false,
+	Callback  = function(Value)
+		givingMoney = Value
+	end,
+	
+	
+})
+
+
+while wait() do
+	if givingMoney == true then
+		game:GetService("ReplicatedStorage").Services.DailyService.RF.GetReward:InvokeServer()
+
+
+	end
+end
+
+
+
+
+TabBM:AddSection({
+	Name = "Queue (-250 cash, meme names need to be exact)"
+	
+	
+})
+
+TabBM:AddTextBox({
+	Name = "First meme to queue",
+	Default = "",
+	TextDisappear = false,
+	Callback = function(Value)
+		firstMeme = Value
+	end,
+	
+})
+
+TabBM:AddTextBox({
+	Name = "Second meme to queue",
+	Default = "",
+	TextDisappear = false,
+	Callback = function(Value)
+		secondMeme = Value
+	end,
+
+})
+
+
+
+TabBM:AddButton({
+	Name = "Queue memes that were typed above",
+	Callback  = function()
+		
+		
+		local args = {
+			[1] = firstMeme,
+			[2] = secondMeme
+		}
+
+		game:GetService("ReplicatedStorage").Services.MemeService.RF.QueueCurrencies:InvokeServer(unpack(args))
+
+		
+		
+		
+		
+		
+		
+	end,
+	
+	
+	
+})
+
+
+
+
+
+TabBM:AddToggle({
+	Name = "Spam queue with what you typed above",
+	Defalt = false,
+	Callback  = function(Value)
+spammingQueue = true
+
+
+	end,
+
+
+
+})
+
+
+TabBM:AddToggle({
+
+	Name = "Auto give cash",
+	Default = false,
+	Callback  = function(Value)
+		givingMoney = Value
+	end,
+
+
+})
+
+while wait() do
+	if spammingQueue == true then
+
+
+		local args = {
+			[1] = firstMeme,
+			[2] = secondMeme
+		}
+
+		game:GetService("ReplicatedStorage").Services.MemeService.RF.QueueCurrencies:InvokeServer(unpack(args))
+
+
+
+
+
+	end
+end
 
 
 -- Initialize the Orion Library UI
