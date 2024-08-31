@@ -58,16 +58,7 @@ TabBM:AddButton({
 })
 
 
---[[
-TabBM:AddToggle({
-	Name = "Auto give cash",
-	Default = false,
-	Callback = function(Value)
-		givingMoney = Value
-	end,
-})
 
-]]
 
 TabBM:AddButton({
 	Name = "queue skibidi and wat the sigma  lol",
