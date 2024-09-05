@@ -910,7 +910,27 @@ Tab:AddButton({
 
 
 
+Tab:NewButton({
+	Name = "Network owner all of your toys",
+	
+	Callback = function()
+		for _, toy in PlayerToysFolder:GetDescendants() do
+		
+		game.Players.LocalPlayer.Character:PivotTo(toy.CFrame)
+		task.wait()
+		
+		local args = {
+			[1] = toy,
+			[2] =game.Players.LocalPlayer.Character.Head.Position
+		}
 
+		game:GetService("ReplicatedStorage").GrabEvents.SetNetworkOwner:FireServer(unpack(args))
+		task.wait()
+		end
+	end
+	
+	
+})
 
 
 
