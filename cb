@@ -102,7 +102,7 @@ ImageLabel_3.Image = "rbxassetid://119347745327117"
 
 -- Scripts:
 
-local function ZAIEBBA_fake_script() -- AnchorButton.LocalScript 
+local function XRIGPFE_fake_script() -- AnchorButton.LocalScript 
 	local script = Instance.new('LocalScript', AnchorButton)
 
 	script.Parent.MouseButton1Click:Connect(function()
@@ -139,8 +139,8 @@ local function ZAIEBBA_fake_script() -- AnchorButton.LocalScript
 	end)
 	
 end
-coroutine.wrap(ZAIEBBA_fake_script)()
-local function HJWS_fake_script() -- Escape.LocalScript 
+coroutine.wrap(XRIGPFE_fake_script)()
+local function UBMECD_fake_script() -- Escape.LocalScript 
 	local script = Instance.new('LocalScript', Escape)
 
 	script.Parent.MouseButton1Click:Connect(function()
@@ -158,8 +158,8 @@ local function HJWS_fake_script() -- Escape.LocalScript
 	
 	end)
 end
-coroutine.wrap(HJWS_fake_script)()
-local function YQQZC_fake_script() -- ESP.LocalScript 
+coroutine.wrap(UBMECD_fake_script)()
+local function UMPOB_fake_script() -- ESP.LocalScript 
 	local script = Instance.new('LocalScript', ESP)
 
 	
@@ -181,8 +181,8 @@ local function YQQZC_fake_script() -- ESP.LocalScript
 	end
 	end)
 end
-coroutine.wrap(YQQZC_fake_script)()
-local function VMAPH_fake_script() -- FartherReach.LocalScript 
+coroutine.wrap(UMPOB_fake_script)()
+local function GFUUJ_fake_script() -- FartherReach.LocalScript 
 	local script = Instance.new('LocalScript', FartherReach)
 
 	
@@ -204,4 +204,4 @@ local function VMAPH_fake_script() -- FartherReach.LocalScript
 	
 	
 end
-coroutine.wrap(VMAPH_fake_script)()
+coroutine.wrap(GFUUJ_fake_script)()
