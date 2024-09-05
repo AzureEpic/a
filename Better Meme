@@ -12,7 +12,8 @@ local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/Azu
 
 local plr = game.Players.LocalPlayer
 
-local whitelisted = {"TheAzureEpic", "AssAssWithDik", "FreakyDaveFlinge"}
+
+local whitelisted = {"TheAzureEpic", "AssAssWithDik", "FreakyDaveFlinge", "roblox_user_5562123117", "XDummyMinion"}
 
 local isWhitelisted = false
 
