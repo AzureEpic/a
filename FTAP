@@ -47,6 +47,7 @@ end
 
 
 if not isWhitelisted then
+	--[[
 	OrionLib:MakeNotification({
 		Name = "ruh roh!",
 		Content = "sry skid but this is a private script :)",
@@ -60,7 +61,7 @@ if not isWhitelisted then
 
 	return
 
-
+]]
 end
 
 
