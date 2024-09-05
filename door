@@ -12,7 +12,8 @@ local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/Azu
 
 local plr = game.Players.LocalPlayer
 
-local whitelisted = {"TheAzureEpic", "AssAssWithDik", "FreakyDaveFlinge"}
+
+local whitelisted = {"TheAzureEpic", "AssAssWithDik", "FreakyDaveFlinge", "roblox_user_5562123117", "XDummyMinion"}
 
 local isWhitelisted = false
 
@@ -33,6 +34,15 @@ if not isWhitelisted then
 	wait(5)
 	return
 end
+
+
+
+OrionLib:MakeNotification({
+		Name = "read",
+		Content = "this most likely is broken",
+		Image = "rbxassetid://4483345998",
+		Time = 5
+	})
 
 local Window = OrionLib:MakeWindow({
 	Name = "Doors",
