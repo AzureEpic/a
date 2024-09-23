@@ -1530,7 +1530,7 @@ AuraTab:AddSlider({
 
 
 
-AuraTab:AddInput({
+AuraTab:AddTextbox({
 Name = "Set Aura Radius",
 Callback = function(val)
 auraRadius = val
