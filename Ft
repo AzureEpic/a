@@ -1531,15 +1531,6 @@ AuraTab:AddSlider({
 
 
 
-AuraTab:AddTextbox({
-	Name = "Set Aura Radius",
-	Default = "",
-	TextDisappear = true,
-	Callback = function(Value)
-		auraRadius = value
-	end	  
-})
-
 
 
 AuraTab:AddToggle({
