@@ -1,0 +1,455 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local ExecPanel = Instance.new("ScreenGui")
+local Open = Instance.new("ImageButton")
+local UICorner = Instance.new("UICorner")
+local Menu = Instance.new("Frame")
+local PatternB = Instance.new("ImageLabel")
+local PatternA = Instance.new("ImageLabel")
+local UICorner_2 = Instance.new("UICorner")
+local Title = Instance.new("TextLabel")
+local Close = Instance.new("ImageButton")
+local Automations = Instance.new("Frame")
+local PatternB_2 = Instance.new("ImageLabel")
+local PatternA_2 = Instance.new("ImageLabel")
+local UICorner_3 = Instance.new("UICorner")
+local Title_2 = Instance.new("TextLabel")
+local Close_2 = Instance.new("ImageButton")
+local Scroll = Instance.new("ScrollingFrame")
+local UIListLayout = Instance.new("UIListLayout")
+local ToggleFrame = Instance.new("Frame")
+local Toggle = Instance.new("TextButton")
+local Status = Instance.new("Frame")
+local AutomationOpen = Instance.new("TextButton")
+local UICorner_4 = Instance.new("UICorner")
+
+--Properties:
+
+ExecPanel.Name = "ExecPanel"
+ExecPanel.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ExecPanel.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Open.Name = "Open"
+Open.Parent = ExecPanel
+Open.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Open.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Open.BorderSizePixel = 0
+Open.Position = UDim2.new(0.538461566, 0, 0.0188442208, 0)
+Open.Size = UDim2.new(0.0827129856, 0, 0.125628144, 0)
+Open.Image = "http://www.roblox.com/asset/?id=18581275633"
+
+UICorner.CornerRadius = UDim.new(0, 3434)
+UICorner.Parent = Open
+
+Menu.Name = "Menu"
+Menu.Parent = ExecPanel
+Menu.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
+Menu.BackgroundTransparency = 0.500
+Menu.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Menu.BorderSizePixel = 0
+Menu.Position = UDim2.new(0, 0, 0.0125628142, 0)
+Menu.Size = UDim2.new(0.538461566, 0, 0.418341696, 0)
+Menu.Visible = false
+
+PatternB.Name = "PatternB"
+PatternB.Parent = Menu
+PatternB.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+PatternB.BackgroundTransparency = 1.000
+PatternB.BorderColor3 = Color3.fromRGB(0, 0, 0)
+PatternB.BorderSizePixel = 0
+PatternB.Position = UDim2.new(0.033290036, 0, 0.0740638673, 0)
+PatternB.Size = UDim2.new(0.482334822, 0, 0.84984982, 0)
+PatternB.Image = "http://www.roblox.com/asset/?id=86460659446767"
+
+PatternA.Name = "PatternA"
+PatternA.Parent = Menu
+PatternA.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+PatternA.BackgroundTransparency = 1.000
+PatternA.BorderColor3 = Color3.fromRGB(0, 0, 0)
+PatternA.BorderSizePixel = 0
+PatternA.Position = UDim2.new(0.516990185, 0, 0.0740638673, 0)
+PatternA.Size = UDim2.new(0.440860182, 0, 0.84984982, 0)
+PatternA.Image = "http://www.roblox.com/asset/?id=86460659446767"
+
+UICorner_2.CornerRadius = UDim.new(0, 20)
+UICorner_2.Parent = Menu
+
+Title.Name = "Title"
+Title.Parent = Menu
+Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Title.BackgroundTransparency = 1.000
+Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Title.BorderSizePixel = 0
+Title.Position = UDim2.new(0.274322182, 0, 0.0170068033, 0)
+Title.Size = UDim2.new(0.482334822, 0, 0.264264256, 0)
+Title.Font = Enum.Font.Arcade
+Title.Text = "Exec's Panel"
+Title.TextColor3 = Color3.fromRGB(2554, 2554, 2554)
+Title.TextScaled = true
+Title.TextSize = 14.000
+Title.TextWrapped = true
+
+Close.Name = "Close"
+Close.Parent = Menu
+Close.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Close.BackgroundTransparency = 1.000
+Close.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Close.BorderSizePixel = 0
+Close.Position = UDim2.new(0.0322580636, 0, 0.72372371, 0)
+Close.Size = UDim2.new(0.107526869, 0, 0.198198199, 0)
+Close.Image = "http://www.roblox.com/asset/?id=8454806674"
+
+Automations.Name = "Automations"
+Automations.Parent = Menu
+Automations.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
+Automations.BackgroundTransparency = 0.500
+Automations.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Automations.BorderSizePixel = 0
+Automations.Position = UDim2.new(0.28725037, 0, 0.997547805, 0)
+Automations.Size = UDim2.new(0.640552938, 0, 0.507507503, 0)
+Automations.Visible = false
+
+PatternB_2.Name = "PatternB"
+PatternB_2.Parent = Automations
+PatternB_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+PatternB_2.BackgroundTransparency = 1.000
+PatternB_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+PatternB_2.BorderSizePixel = 0
+PatternB_2.Position = UDim2.new(0.0332900658, 0, 0.0740638152, 0)
+PatternB_2.Size = UDim2.new(0, 201, 0, 143)
+PatternB_2.Image = "http://www.roblox.com/asset/?id=86460659446767"
+
+PatternA_2.Name = "PatternA"
+PatternA_2.Parent = Automations
+PatternA_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+PatternA_2.BackgroundTransparency = 1.000
+PatternA_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+PatternA_2.BorderSizePixel = 0
+PatternA_2.Position = UDim2.new(0.516990304, 0, 0.0740638152, 0)
+PatternA_2.Size = UDim2.new(0, 183, 0, 143)
+PatternA_2.Image = "http://www.roblox.com/asset/?id=86460659446767"
+
+UICorner_3.CornerRadius = UDim.new(0, 20)
+UICorner_3.Parent = Automations
+
+Title_2.Name = "Title"
+Title_2.Parent = Automations
+Title_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Title_2.BackgroundTransparency = 1.000
+Title_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Title_2.BorderSizePixel = 0
+Title_2.Position = UDim2.new(0.274322152, 0, 0.0170066878, 0)
+Title_2.Size = UDim2.new(0, 201, 0, 44)
+Title_2.Font = Enum.Font.Arcade
+Title_2.Text = "Automations"
+Title_2.TextColor3 = Color3.fromRGB(2554, 2554, 2554)
+Title_2.TextScaled = true
+Title_2.TextSize = 14.000
+Title_2.TextWrapped = true
+
+Close_2.Name = "Close"
+Close_2.Parent = Automations
+Close_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Close_2.BackgroundTransparency = 1.000
+Close_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Close_2.BorderSizePixel = 0
+Close_2.Position = UDim2.new(0.864392459, 0, 0.120173529, 0)
+Close_2.Size = UDim2.new(0, 31, 0, 26)
+Close_2.Image = "http://www.roblox.com/asset/?id=8454806674"
+
+Scroll.Name = "Scroll"
+Scroll.Parent = Automations
+Scroll.Active = true
+Scroll.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Scroll.BackgroundTransparency = 1.000
+Scroll.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Scroll.BorderSizePixel = 0
+Scroll.Position = UDim2.new(0.0335731432, 0, 0.272189349, 0)
+Scroll.Size = UDim2.new(0, 384, 0, 109)
+
+UIListLayout.Parent = Scroll
+UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+
+ToggleFrame.Name = "ToggleFrame"
+ToggleFrame.Parent = Scroll
+ToggleFrame.BackgroundColor3 = Color3.fromRGB(150, 150, 150)
+ToggleFrame.BackgroundTransparency = 0.500
+ToggleFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ToggleFrame.BorderSizePixel = 0
+ToggleFrame.Size = UDim2.new(0, 309, 0, 51)
+
+Toggle.Name = "Toggle"
+Toggle.Parent = ToggleFrame
+Toggle.BackgroundColor3 = Color3.fromRGB(200, 200, 200)
+Toggle.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Toggle.BorderSizePixel = 0
+Toggle.Position = UDim2.new(0.106796116, 0, 0.156862751, 0)
+Toggle.Size = UDim2.new(0, 134, 0, 35)
+Toggle.Font = Enum.Font.SourceSans
+Toggle.Text = "\"Cat\" CPU"
+Toggle.TextColor3 = Color3.fromRGB(0, 0, 0)
+Toggle.TextScaled = true
+Toggle.TextSize = 14.000
+Toggle.TextWrapped = true
+
+Status.Name = "Status"
+Status.Parent = ToggleFrame
+Status.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+Status.BorderColor3 = Color3.fromRGB(255, 0, 0)
+Status.BorderSizePixel = 0
+Status.Position = UDim2.new(0.825242698, 0, 0.176470593, 0)
+Status.Size = UDim2.new(0, 36, 0, 34)
+
+AutomationOpen.Name = "AutomationOpen"
+AutomationOpen.Parent = Menu
+AutomationOpen.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+AutomationOpen.BackgroundTransparency = 0.800
+AutomationOpen.BorderColor3 = Color3.fromRGB(0, 0, 0)
+AutomationOpen.BorderSizePixel = 0
+AutomationOpen.Position = UDim2.new(0.0679428205, 0, 0.279762149, 0)
+AutomationOpen.Size = UDim2.new(0.307219625, 0, 0.15015015, 0)
+AutomationOpen.Font = Enum.Font.Arcade
+AutomationOpen.Text = "Automations"
+AutomationOpen.TextColor3 = Color3.fromRGB(3213, 3213, 3213)
+AutomationOpen.TextScaled = true
+AutomationOpen.TextSize = 14.000
+AutomationOpen.TextWrapped = true
+
+UICorner_4.Parent = AutomationOpen
+
+-- Module Scripts:
+
+local fake_module_scripts = {}
+
+do -- ExecPanel.MenuHandle
+	local script = Instance.new('ModuleScript', ExecPanel)
+	script.Name = "MenuHandle"
+	local function module_script()
+		local tweenService = game:GetService("TweenService")
+		local tInfo = TweenInfo.new(1)
+		
+		local open = script.Parent.Open
+		local menu = script.Parent.Menu
+		local paA = menu.PatternA
+		local paB = menu.PatternB
+		local menuTitle = menu.Title
+		local close = script.Parent.Menu.Close
+		
+		-- Debug check to ensure the close button is correctly referenced
+		print("Close button:", close)
+		
+		paA.ImageTransparency = 1
+		paB.ImageTransparency = 1
+		menuTitle.TextTransparency = 1
+		menuTitle.UIStroke.Transparency = 1
+		close.ImageTransparency = 1 
+		
+		local func = {}
+		
+		function func.OpenMenu()
+			
+			menu.BackgroundTransparency = 0.5
+			menu:TweenSize(UDim2.new(0, 651, 0, 333))
+			open.Visible = false
+			menu.Visible = true
+			wait(1.5)
+		
+			local tweenA = tweenService:Create(paA, tInfo, {ImageTransparency = 0})
+			local tweenB = tweenService:Create(paB, tInfo, {ImageTransparency = 0})
+			local tweenTitle = tweenService:Create(menuTitle, tInfo, {TextTransparency = 0})
+			local tweenStroke = tweenService:Create(menuTitle.UIStroke, tInfo, {Transparency = 0})
+		
+			print("Is close button valid and visible before tween?", close, close.Visible)
+			close.Visible = true  -- Ensure it's visible before playing the tween
+			local tweenClose = tweenService:Create(close, tInfo, {ImageTransparency = 0})
+		
+			tweenA:Play()
+			tweenB:Play()
+			tweenTitle:Play()
+			tweenStroke:Play()
+			tweenClose:Play()
+		
+			print("tween played open") 
+		
+			tweenA.Completed:Wait()
+			tweenB.Completed:Wait()
+			tweenTitle.Completed:Wait()
+			tweenStroke.Completed:Wait()
+			tweenClose.Completed:Wait()
+		end
+		
+		function func.CloseMenu()
+			open.Visible = true
+			local tweenA = tweenService:Create(paA, tInfo, {ImageTransparency = 1})
+			local tweenB = tweenService:Create(paB, tInfo, {ImageTransparency = 1})
+			local tweenTitle = tweenService:Create(menuTitle, tInfo, {TextTransparency = 1})
+			local tweenStroke = tweenService:Create(menuTitle.UIStroke, tInfo, {Transparency = 1})
+		
+			print("Is close button valid and visible before tween?", close, close.Visible)
+			close.Visible = true  -- Ensure it's visible before playing the tween
+			local tweenClose = tweenService:Create(close, tInfo, {ImageTransparency = 1})
+		
+			tweenA:Play()
+			tweenB:Play()
+			tweenTitle:Play()
+			tweenStroke:Play()
+			tweenClose:Play()
+		menu:TweenSize(UDim2.new(0, 1, 0, 1))
+			print("tween played for closing")
+		
+			tweenA.Completed:Wait()
+			tweenB.Completed:Wait()
+			tweenTitle.Completed:Wait()
+			tweenStroke.Completed:Wait()
+			tweenClose.Completed:Wait()
+		
+		
+		tweenService:Create(menu, tInfo, {BackgroundTransparency = 1})
+		menu.Visible = false
+			
+			print("Closed Closedflhsffhsdfdfsdffsfsffsf")
+		end
+		
+		return func
+		
+	end
+	fake_module_scripts[script] = module_script
+end
+
+
+-- Scripts:
+
+local function UITT_fake_script() -- ToggleFrame.LocalScript 
+	local script = Instance.new('LocalScript', ToggleFrame)
+	local req = require
+	local require = function(obj)
+		local fake = fake_module_scripts[obj]
+		if fake then
+			return fake()
+		end
+		return req(obj)
+	end
+
+	local going = false
+	local statusCube = script.Parent.Status
+	
+	-- Toggle the state on button click
+	script.Parent.Toggle.MouseButton1Click:Connect(function() 
+		going = not going
+		print(going)
+	end)
+	
+	-- Use RunService instead of a while true loop
+	local RunService = game:GetService("RunService")
+	RunService.Heartbeat:Connect(function()
+		if going == true then
+			print("Hi")
+			--statusCube.BackgroundColor = Color3.fromRGB(0, 255, 0)
+	
+			local chosenSlot = math.random(1, 8)
+	
+			-- Call the RemoteFunction with the random slot
+			game:GetService("ReplicatedStorage").Events.RemoteFunction.PlayerSpawn:InvokeServer("Slot" .. chosenSlot)
+	
+			-- Wait for a random period between actions
+			wait(math.random() + math.random() + math.random())
+	
+			-- Invoke other remote calls
+			game:GetService("ReplicatedStorage").Events.RemoteFunction.PlayerSpawn:InvokeServer("Bank")
+			game:GetService("ReplicatedStorage").Events.RemoteFunction.PlayerSpawn:InvokeServer("Cannon")
+	
+			-- Another random wait
+			wait(math.random() + math.random() + math.random())
+	
+		else
+			-- Change the color to red when going is false
+			--statusCube.BackgroundColor = Color3.fromRGB(255, 0, 0)
+		end
+	end)
+	
+end
+coroutine.wrap(UITT_fake_script)()
+local function FXDORP_fake_script() -- ExecPanel.MenuMain 
+	local script = Instance.new('LocalScript', ExecPanel)
+	local req = require
+	local require = function(obj)
+		local fake = fake_module_scripts[obj]
+		if fake then
+			return fake()
+		end
+		return req(obj)
+	end
+
+	--sigma services-
+	local tweenService = game:GetService("TweenService")
+	local tInfo = TweenInfo.new(1)
+	
+	local open = script.Parent.Open
+	local menu = script.Parent.Menu
+	local paA = menu.PatternA
+	local paB = menu.PatternB
+	local menuTitle = menu.Title
+	local close = menu.Close
+	
+	paA.ImageTransparency = 1
+	paB.ImageTransparency = 1
+	menuTitle.TextTransparency = 1
+	menuTitle.UIStroke.Transparency = 1
+	
+	
+	local uiFunctions= require(script.Parent.MenuHandle) 
+	
+	local menuIsOpen = false
+	
+	
+	
+	open.MouseButton1Click:Connect(function() 
+		menuIsOpen = not menuIsOpen
+		if menuIsOpen == true then
+			uiFunctions.OpenMenu()
+		else
+			uiFunctions.CloseMenu()
+		end
+	
+	end)
+	
+	
+	
+	
+	close.MouseButton1Click:Connect(function() 
+		
+	uiFunctions.CloseMenu()	
+		
+	end)
+	
+	
+	
+	---------------------AUTOMATIONS
+	
+	
+	menu.AutomationOpen.MouseButton1Click:Connect(function() 
+		
+	menu.Automations.Visible = true	
+		
+		
+	end)
+	
+	
+	menu.Automations.Close.MouseButton1Click:Connect(function() 
+		
+		menu.Automations.Visible = false
+		
+		
+		
+	end)
+	
+	
+	
+	
+	
+	
+end
+coroutine.wrap(FXDORP_fake_script)()
