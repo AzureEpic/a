@@ -85,7 +85,7 @@ local lightbitoffset = 1
 local lightbitradius = 20
 local usingradius = lightbitradius
 
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/AzureEpic/a/main/OrionAz')))()
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/AzureEpic/orion/refs/heads/main/Source')))() 
 local U = loadstring(game:HttpGet("https://raw.githubusercontent.com/Undebolted/Utilities/main/utilities.lua", true))()
 --[[
     Utilities.IsDescendantOf(child, parent)
